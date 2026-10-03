@@ -370,6 +370,43 @@ h1,h2,h3,p{text-wrap:balance}
 </form>
 </section>
 
+<!-- CLIENTS (moving logos) -->
+<section aria-label="Our clients" style="padding: clamp(56px, 8vw, 88px) 0; background: #FFFFFF; overflow: hidden">
+<h2 style="margin: 0 22px; text-align: center; font-size: clamp(28px, 4vw, 44px); line-height: 1.05; font-weight: 800; letter-spacing: -0.01em; text-transform: uppercase; color: #2E3136">Trusted by</h2>
+<p style="margin: 12px 22px 0; text-align: center; font-size: clamp(16px, 1.6vw, 19px); font-weight: 300; color: #6E6E73">The clients we move cargo for, every day.</p>
+<div class="cl-wrap">
+<div class="cl-track">
+<div class="cl-card" style="background:#FFFFFF"><img src="reload.png" alt="Reload Logistics"></div>
+<div class="cl-card" style="background:#0F1B2D"><img src="agl.png" alt="AGL – Africa Global Logistics"></div>
+<div class="cl-card" style="background:#EBEBEB"><img src="vinmart.png" alt="Vin Mart"></div>
+<div class="cl-card" style="background:#1B3550"><img src="fracht.png" alt="Fracht Group – Polytra Group"></div>
+<div class="cl-card" aria-hidden="true" style="background:#FFFFFF"><img src="reload.png" alt=""></div>
+<div class="cl-card" aria-hidden="true" style="background:#0F1B2D"><img src="agl.png" alt=""></div>
+<div class="cl-card" aria-hidden="true" style="background:#EBEBEB"><img src="vinmart.png" alt=""></div>
+<div class="cl-card" aria-hidden="true" style="background:#1B3550"><img src="fracht.png" alt=""></div>
+<div class="cl-card" aria-hidden="true" style="background:#FFFFFF"><img src="reload.png" alt=""></div>
+<div class="cl-card" aria-hidden="true" style="background:#0F1B2D"><img src="agl.png" alt=""></div>
+<div class="cl-card" aria-hidden="true" style="background:#EBEBEB"><img src="vinmart.png" alt=""></div>
+<div class="cl-card" aria-hidden="true" style="background:#1B3550"><img src="fracht.png" alt=""></div>
+<div class="cl-card" aria-hidden="true" style="background:#FFFFFF"><img src="reload.png" alt=""></div>
+<div class="cl-card" aria-hidden="true" style="background:#0F1B2D"><img src="agl.png" alt=""></div>
+<div class="cl-card" aria-hidden="true" style="background:#EBEBEB"><img src="vinmart.png" alt=""></div>
+<div class="cl-card" aria-hidden="true" style="background:#1B3550"><img src="fracht.png" alt=""></div>
+</div>
+</div>
+<style>
+.cl-wrap{margin-top:clamp(32px,4vw,48px);position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.cl-track{display:flex;gap:24px;width:max-content;animation:cl-move 32s linear infinite}
+.cl-wrap:hover .cl-track{animation-play-state:paused}
+.cl-card{flex:0 0 auto;width:240px;height:110px;border-radius:20px;overflow:hidden;background:#F2F3F5;box-shadow:0 6px 18px -10px rgba(46,49,54,.35);transition:transform .3s ease}
+.cl-card:hover{transform:translateY(-4px)}
+.cl-card img{width:100%;height:100%;object-fit:contain;display:block}
+@keyframes cl-move{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 12px))}}
+@media (max-width:600px){.cl-card{width:180px;height:84px;border-radius:16px}.cl-track{gap:16px;animation-duration:24s}@keyframes cl-move{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 8px))}}}
+@media (prefers-reduced-motion:reduce){.cl-track{animation:none;flex-wrap:wrap;justify-content:center;width:auto;padding:0 22px}.cl-card[aria-hidden]{display:none}}
+</style>
+</section>
+
 <!-- FOOTER -->
 <footer style="background: #2E3136; color: #E4E6E9">
 <div style="max-width: 1320px; margin: 0 auto; padding: clamp(56px, 7vw, 80px) 24px clamp(48px, 6vw, 64px); display: flex; flex-wrap: wrap; align-items: center; gap: 48px">
