@@ -132,8 +132,8 @@ function toast(t){var e=$("toast");e.textContent=t;e.classList.add("on");clearTi
 function dt(s){return new Date(s).toLocaleString("en-GB",{day:"2-digit",month:"short",year:"numeric",hour:"2-digit",minute:"2-digit"})}
 var DEPS={bookings:{n:"Bookings & dispatch",q:["Speed of confirming orders","Trucks available when needed","Punctual for loading","Accurate booking details","Easy to reach operations"]},
  transit:{n:"Transit & tracking",q:["Location update accuracy","Daily report usefulness","ETA accuracy","Driver professionalism","Cargo safe on arrival"]},
- border:{n:"Border clearing & documents",q:["Speed of documents","Document accuracy","Border delay updates","Clearance vs. expectation","Handling clearance problems"]},
- offload:{n:"Offloading & POD",q:["Delivery on agreed date","Offloading coordination","POD speed","Handling delivery problems","Communication at delivery"]},
+ border:{n:"Border clearing & documents",q:["Sharing documents to RIT","Document accuracy","Border delay updates","Handling clearance challenges"]},
+ offload:{n:"Offloading & POD",q:["Delivery on agreed date","Offloading coordination","POD speed","Handling delivery challenges","Communication at delivery"]},
  finance:{n:"Finance & invoicing",q:["Invoice accuracy","Clear rates and charges","Answering billing questions","Statement/payment communication","Fair extra charges"]}};
 var STATUS=["new","contacted","quoted","won","lost"];
 var me=null,REQ=[],FB=[],rFilter="";

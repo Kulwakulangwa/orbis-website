@@ -62,7 +62,7 @@ select.inp{appearance:none;background-image:linear-gradient(45deg,transparent 50
   <section class="intro" aria-label="About this survey">
     <div class="kick">Listen · Understand · Improve</div>
     <h1>Your experience.<br><span>Our next step.</span></h1>
-    <p class="lead">Tell us where Orbis delivers — and where we need to do better.</p>
+    <p class="lead">Tell us where Orbis delivers and where we need to do better.</p>
     <div class="note"><b>Client feedback</b>Think about the past 3 months. Rate only what you know. No name or email needed.</div>
   </section>
 
@@ -121,8 +121,8 @@ var I={
 var DEPS=[
  {k:"bookings",n:"Bookings & dispatch",d:"Orders, truck availability and loading",ic:I.book,q:["How fast do we confirm your truck orders?","How well do we supply trucks when you need them?","How punctual are our trucks for loading?","How accurate are booking details (trucks, drivers, documents)?","How easy is it to reach our operations team?"]},
  {k:"transit",n:"Transit & tracking",d:"Updates, daily reports and drivers",ic:I.trans,q:["How accurate are our truck location updates?","How useful is our daily tracking report?","How accurate are our arrival estimates (ETA)?","How professional are our drivers?","How safe and intact is your cargo on arrival?"]},
- {k:"border",n:"Border clearing & documents",d:"Documents and movement through borders",ic:I.bord,q:["How fast do we prepare clearance documents?","How accurate are our documents?","How well do we update you on border delays?","How does clearance time compare with what we told you?","How well do we handle clearance problems within our control?"]},
- {k:"offload",n:"Offloading & POD",d:"Delivery, offloading and proof of delivery",ic:I.off,q:["How often do we deliver on the agreed date?","How well do we coordinate offloading?","How quickly do you receive the POD?","How well do we handle delivery problems?","How clear is our communication at delivery?"]},
+ {k:"border",n:"Border clearing & documents",d:"Documents and movement through borders",ic:I.bord,q:["How fast do we share clearance documents to RIT?","How accurate are our documents?","How well do we update you on border delays?","How well do we handle clearance challenges within our control?"]},
+ {k:"offload",n:"Offloading & POD",d:"Delivery, offloading and proof of delivery",ic:I.off,q:["How often do we deliver on the agreed date?","How well do we coordinate offloading?","How quickly do you receive the POD?","How well do we handle delivery challenges (for example, weight shortage)?","How clear is our communication at delivery?"]},
  {k:"finance",n:"Finance & invoicing",d:"Invoices, rates and payment communication",ic:I.fin,q:["How accurate are our invoices?","How clear are our rates and charges?","How fast do we answer billing questions?","How clear is our statement and payment communication?","How fair are extra charges, when they apply?"]}];
 var $=function(id){return document.getElementById(id)};
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
