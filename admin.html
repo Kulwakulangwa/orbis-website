@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Admin · Orbis Logistics</title>
+<link rel="icon" href="logo_dark.png">
+<link rel="stylesheet" href="glass.css">
+<style>
+.wrap{max-width:1320px;margin:0 auto;padding:clamp(18px,3vw,36px) clamp(16px,3vw,32px) 80px}
+.login{min-height:calc(100vh - 64px);display:flex;align-items:center;justify-content:center;padding:24px 16px}
+.login .card{width:min(420px,100%);display:grid;gap:14px}
+.login h1{margin:4px 0 0;font-size:30px;letter-spacing:-.03em}
+.tabs{display:inline-flex;gap:4px;padding:4px;border-radius:980px;background:var(--card-bg);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border:1px solid var(--card-line)}
+.tabs button{border:0;background:transparent;border-radius:980px;padding:9px 18px;font-size:15px;font-weight:600;color:var(--mute);cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.tabs button[aria-selected="true"]{background:var(--brand);color:var(--bg)}
+.badge{min-width:22px;height:22px;padding:0 7px;border-radius:980px;background:var(--warn);color:#1d1d1f;font-size:12px;font-weight:700;display:inline-flex;align-items:center;justify-content:center}
+.bar2{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0}
+.bar2 .inp{min-height:44px;width:auto;flex:1 1 220px}
+.bar2 select.inp{flex:0 1 200px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--card-line);background:var(--card-bg);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-radius:980px;padding:8px 14px;font-size:14px;font-weight:600;cursor:pointer;display:inline-flex;gap:8px;align-items:center}
+.chip b{font-variant-numeric:tabular-nums}
+.chip[aria-pressed="true"]{background:var(--brand);color:var(--bg);border-color:var(--brand)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(380px,100%),1fr));gap:16px;align-items:start}
+.resp .scores,.resp > div:last-child{justify-self:start}
+.rq h3{margin:0;font-size:20px;letter-spacing:-.02em}
+.rq .meta{font-size:13px;color:var(--mute);margin-top:3px}
+.route{display:flex;align-items:center;gap:8px;margin-top:14px;font-size:16px;font-weight:600}
+.route svg{width:18px;height:18px;color:var(--mute)}
+.cargo{margin:10px 0 0;font-size:15px;line-height:1.45;white-space:pre-wrap;word-break:break-word}
+.contact{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.contact a{font-size:14px;font-weight:600;text-decoration:none;padding:7px 12px;border-radius:980px;background:var(--chip-bg);border:1px solid var(--card-line)}
+.st{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:980px;background:var(--track);color:var(--mute);white-space:nowrap}
+.st.new{background:var(--warn);color:#1d1d1f}.st.won{background:rgba(52,199,89,.25);color:var(--fg)}.st.lost{opacity:.6}
+.rq .edit{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;margin-top:16px;padding-top:14px;border-top:1px solid var(--card-line)}
+.rq .edit .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.rq .edit select.inp{width:auto;flex:1 1 160px;min-height:42px}
+.rq textarea.inp{min-height:64px}
+.sum{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(230px,100%),1fr));gap:16px}
+.kpi .num{font-size:clamp(40px,4vw,56px);font-weight:700;letter-spacing:-.04em;line-height:1;margin-top:12px;font-variant-numeric:tabular-nums}
+.kpi .num small{font-size:16px;font-weight:600;color:var(--mute);letter-spacing:0;margin-left:6px}
+.meter{height:8px;border-radius:8px;background:var(--track);overflow:hidden;margin-top:12px}
+.meter i{display:block;height:100%;background:var(--brand);border-radius:8px}
+.qrow{display:grid;grid-template-columns:minmax(0,1fr) 120px 44px;gap:12px;align-items:center;padding:9px 0;border-top:1px solid var(--card-line);font-size:14px}
+.qrow .meter{margin:0}
+.qrow b{text-align:right;font-variant-numeric:tabular-nums}
+.resp{display:grid;gap:8px}
+.resp .top2{display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap}
+.resp .scores{display:flex;flex-wrap:wrap;gap:6px}
+.resp .scores span{font-size:13px;padding:4px 10px;border-radius:980px;background:var(--chip-bg);border:1px solid var(--card-line)}
+.resp blockquote{margin:4px 0 0;padding:10px 14px;border-left:3px solid var(--card-line);font-size:14px;line-height:1.45;white-space:pre-wrap;word-break:break-word}
+.resp blockquote b{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin-bottom:2px}
+.empty{padding:28px;text-align:center;color:var(--mute)}
+.urow{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--card-line)}
+.uform{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:10px;align-items:end;margin-top:14px}
+.right{display:flex;gap:8px;align-items:center}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in">
+  <a class="logo" href="index.html" aria-label="Orbis Logistics home"><img class="ld" src="logo_dark.png" alt="Orbis Logistics"><img class="lw" src="logo_white.png" alt=""></a>
+  <div class="right"><span class="toplab" id="who">Admin</span><button class="btn ghost sm" id="out" type="button" hidden>Sign out</button></div>
+</div></header>
+
+<section class="login" id="login" hidden>
+  <form class="card" id="lform">
+    <div class="ch"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div><div><div class="lab">Website admin</div><h1>Sign in</h1></div></div>
+    <label class="fld">Email<input class="inp" id="lemail" type="email" autocomplete="username" required></label>
+    <label class="fld">Password<input class="inp" id="lpass" type="password" autocomplete="current-password" required></label>
+    <button class="btn" id="lbtn" type="submit">Sign in</button>
+    <p class="mute" id="lerr" style="margin:0;font-size:14px;min-height:1.2em"></p>
+  </form>
+</section>
+
+<main class="wrap" id="app" hidden>
+  <div class="tabs" role="tablist">
+    <button type="button" role="tab" data-t="req" aria-selected="true">Quote requests <span class="badge" id="newc" hidden></span></button>
+    <button type="button" role="tab" data-t="fb" aria-selected="false">Feedback</button>
+    <button type="button" role="tab" data-t="adm" aria-selected="false">Admins</button>
+  </div>
+
+  <!-- REQUESTS -->
+  <section id="t_req">
+    <div class="bar2">
+      <input class="inp" id="rq" type="search" placeholder="Search name, company, route, cargo…" aria-label="Search requests">
+      <button class="btn ghost sm" id="rxl" type="button">Download Excel</button>
+    </div>
+    <div class="chips" id="rchips"></div>
+    <div class="grid" id="rlist" style="margin-top:16px"></div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="t_fb" hidden>
+    <div class="bar2">
+      <select class="inp" id="fcl" aria-label="Client"></select>
+      <button class="btn ghost sm" id="fxl" type="button">Download Excel</button>
+    </div>
+    <div class="sum" id="fsum"></div>
+    <div class="grid" id="fdeps" style="margin-top:16px"></div>
+    <h2 style="margin:28px 0 12px;font-size:24px;letter-spacing:-.02em">Responses</h2>
+    <div class="grid" id="flist"></div>
+  </section>
+
+  <!-- ADMINS -->
+  <section id="t_adm" hidden>
+    <div class="card" style="margin-top:18px;max-width:720px">
+      <div class="ch"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M17 8v6M14 11h6"/></svg></div><div><div class="lab">Access</div><div class="plc">Who can open this page</div></div></div>
+      <p class="mute" style="font-size:14px;line-height:1.5;margin:12px 0 0">Each person also needs a login in Supabase (orbis-website → Authentication → Users) with the same email.</p>
+      <div id="ulist" style="margin-top:12px"></div>
+      <form class="uform" id="uform">
+        <label class="fld">Email<input class="inp" id="uemail" type="email" required></label>
+        <label class="fld">Name<input class="inp" id="uname" type="text"></label>
+        <button class="btn" type="submit">Add admin</button>
+      </form>
+    </div>
+  </section>
+</main>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+(function(){
+var SB="https://kuwbptjcxdnceabtwbsy.supabase.co",KEY="sb_publishable_eWmP4uNvBzHfrE9QuekCPQ_mebYbFd_";
+var sb=window.supabase.createClient(SB,KEY);
+var $=function(id){return document.getElementById(id)};
+function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function toast(t){var e=$("toast");e.textContent=t;e.classList.add("on");clearTimeout(e._t);e._t=setTimeout(function(){e.classList.remove("on")},2600)}
+function dt(s){return new Date(s).toLocaleString("en-GB",{day:"2-digit",month:"short",year:"numeric",hour:"2-digit",minute:"2-digit"})}
+var DEPS={bookings:{n:"Bookings & dispatch",q:["Speed of confirming orders","Trucks available when needed","Punctual for loading","Accurate booking details","Easy to reach operations"]},
+ transit:{n:"Transit & tracking",q:["Location update accuracy","Daily report usefulness","ETA accuracy","Driver professionalism","Cargo safe on arrival"]},
+ border:{n:"Border clearing & documents",q:["Speed of documents","Document accuracy","Border delay updates","Clearance vs. expectation","Handling clearance problems"]},
+ offload:{n:"Offloading & POD",q:["Delivery on agreed date","Offloading coordination","POD speed","Handling delivery problems","Communication at delivery"]},
+ finance:{n:"Finance & invoicing",q:["Invoice accuracy","Clear rates and charges","Answering billing questions","Statement/payment communication","Fair extra charges"]}};
+var STATUS=["new","contacted","quoted","won","lost"];
+var me=null,REQ=[],FB=[],rFilter="";
+
+/* ---- auth ---- */
+function showLogin(on){$("login").hidden=!on;$("app").hidden=on;$("out").hidden=on;$("who").textContent=on?"Admin":(me&&me.email)||"Admin"}
+$("lform").onsubmit=async function(e){e.preventDefault();var b=$("lbtn");b.disabled=true;b.textContent="Signing in…";$("lerr").textContent="";
+  var r=await sb.auth.signInWithPassword({email:$("lemail").value.trim(),password:$("lpass").value});
+  b.disabled=false;b.textContent="Sign in";if(r.error){$("lerr").textContent="Wrong email or password.";return}
+  $("lpass").value="";start(r.data.session)};
+$("out").onclick=async function(){await sb.auth.signOut();me=null;REQ=[];FB=[];showLogin(true)};
+async function start(sess){me=sess.user;
+  var a=await sb.from("site_admins").select("email").eq("email",me.email.toLowerCase()).maybeSingle();
+  if(!a.data){await sb.auth.signOut();showLogin(true);$("lerr").textContent="This account is not an admin.";return}
+  showLogin(false);await Promise.all([loadReq(),loadFb()]);live()}
+sb.auth.getSession().then(function(r){if(r.data.session)start(r.data.session);else showLogin(true)});
+
+/* ---- tabs ---- */
+document.querySelectorAll(".tabs button").forEach(function(b){b.onclick=function(){document.querySelectorAll(".tabs button").forEach(function(x){x.setAttribute("aria-selected",x===b)});
+  ["req","fb","adm"].forEach(function(t){$("t_"+t).hidden=t!==b.dataset.t});if(b.dataset.t==="adm")loadUsers()}});
+
+/* ---- requests ---- */
+async function loadReq(){var r=await sb.from("quote_requests").select("*").order("created_at",{ascending:false}).limit(1000);if(r.error){toast("Couldn't load requests");return}REQ=r.data;drawReq()}
+function drawReq(){
+  var q=$("rq").value.trim().toLowerCase(),cnt={all:REQ.length};STATUS.forEach(function(s){cnt[s]=0});REQ.forEach(function(x){cnt[x.status]++});
+  $("newc").hidden=!cnt.new;$("newc").textContent=cnt.new;
+  $("rchips").innerHTML=[["","All",cnt.all]].concat(STATUS.map(function(s){return [s,s[0].toUpperCase()+s.slice(1),cnt[s]]})).map(function(c){return '<button type="button" class="chip" data-s="'+c[0]+'" aria-pressed="'+(rFilter===c[0])+'">'+c[1]+' <b>'+c[2]+'</b></button>'}).join("");
+  var list=REQ.filter(function(x){return (!rFilter||x.status===rFilter)&&(!q||[x.name,x.company,x.email,x.phone,x.from_place,x.to_place,x.cargo_details,x.admin_notes].join(" ").toLowerCase().indexOf(q)>=0)});
+  $("rlist").innerHTML=list.map(function(x){var ph=(x.phone||"").replace(/[^\d+]/g,""),wa=ph.replace(/^\+/,"").replace(/^0/,"255");
+    return '<article class="card rq" data-id="'+x.id+'"><div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start"><div><h3>'+esc(x.name)+(x.company?' <span class="mute" style="font-weight:500">· '+esc(x.company)+'</span>':'')+'</h3><div class="meta">'+dt(x.created_at)+(x.updated_by?' · updated by '+esc(x.updated_by):'')+'</div></div><span class="st '+x.status+'">'+x.status+'</span></div>'+
+    '<div class="route">'+esc(x.from_place||"—")+'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'+esc(x.to_place||"—")+'</div>'+
+    (x.cargo_details?'<p class="cargo">'+esc(x.cargo_details)+'</p>':'')+
+    '<div class="contact">'+(x.email?'<a href="mailto:'+esc(x.email)+'">'+esc(x.email)+'</a>':'')+(ph?'<a href="tel:'+esc(ph)+'">Call '+esc(x.phone)+'</a><a href="https://wa.me/'+esc(wa)+'" target="_blank" rel="noopener">WhatsApp</a>':'')+'</div>'+
+    '<div class="edit"><div class="row"><select class="inp" aria-label="Status">'+STATUS.map(function(s){return '<option value="'+s+'"'+(s===x.status?' selected':'')+'>'+s[0].toUpperCase()+s.slice(1)+'</option>'}).join("")+'</select><button class="btn sm" data-a="save" type="button">Save</button><button class="btn ghost sm" data-a="del" type="button">Delete</button></div>'+
+    '<textarea class="inp" placeholder="Notes (rate quoted, who called, next step…)" maxlength="3000">'+esc(x.admin_notes||"")+'</textarea></div></article>'}).join("")||'<div class="card empty">No requests'+(rFilter||q?' match this filter':' yet')+'.</div>';
+}
+$("rchips").addEventListener("click",function(e){var b=e.target.closest(".chip");if(!b)return;rFilter=b.dataset.s;drawReq()});
+$("rq").addEventListener("input",drawReq);
+$("rlist").addEventListener("click",async function(e){var b=e.target.closest("button[data-a]");if(!b)return;var c=b.closest(".rq"),id=c.dataset.id;
+  if(b.dataset.a==="save"){b.disabled=true;var row={status:c.querySelector("select").value,admin_notes:c.querySelector("textarea").value.trim()||null,updated_at:new Date().toISOString(),updated_by:me.email};
+    var r=await sb.from("quote_requests").update(row).eq("id",id).select();b.disabled=false;
+    if(r.error||!r.data.length){toast("Couldn't save");return}var i=REQ.findIndex(function(x){return x.id===id});REQ[i]=r.data[0];drawReq();toast("Saved")}
+  if(b.dataset.a==="del"){if(b.dataset.arm!=="1"){b.dataset.arm="1";b.textContent="Tap again to delete";setTimeout(function(){b.dataset.arm="";b.textContent="Delete"},3000);return}
+    var d=await sb.from("quote_requests").delete().eq("id",id).select();if(d.error||!d.data.length){toast("Couldn't delete");return}REQ=REQ.filter(function(x){return x.id!==id});drawReq();toast("Deleted")}});
+
+/* ---- feedback ---- */
+async function loadFb(){var r=await sb.from("feedback_responses").select("*").order("created_at",{ascending:false}).limit(2000);if(r.error){toast("Couldn't load feedback");return}FB=r.data;
+  var cl={};FB.forEach(function(x){if(x.client)cl[x.client]=1});var v=$("fcl").value;
+  $("fcl").innerHTML='<option value="">All clients</option>'+Object.keys(cl).sort().map(function(c){return '<option'+(c===v?' selected':'')+'>'+esc(c)+'</option>'}).join("");drawFb()}
+function avg(a){a=a.filter(function(v){return typeof v==="number"});return a.length?a.reduce(function(s,v){return s+v},0)/a.length:null}
+function f1(v){return v==null?"–":v.toFixed(1)}
+function drawFb(){
+  var c=$("fcl").value,L=FB.filter(function(x){return !c||x.client===c});
+  var ov=avg(L.map(function(x){return x.overall})),prom=L.filter(function(x){return x.overall>=9}).length,det=L.filter(function(x){return x.overall!=null&&x.overall<=6}).length;
+  var nps=L.length?Math.round((prom-det)/L.length*100):null;
+  var all=[];L.forEach(function(x){Object.keys(x.answers||{}).forEach(function(d){Object.keys(x.answers[d]).forEach(function(k){all.push(x.answers[d][k])})})});
+  $("fsum").innerHTML=[["Responses",L.length,""],["Average score",f1(avg(all)),"/ 5"],["Recommend score",f1(ov),"/ 10"],["NPS",nps==null?"–":nps,""]].map(function(k){
+    return '<div class="card kpi"><div class="lab">'+k[0]+'</div><div class="num">'+k[1]+'<small>'+k[2]+'</small></div></div>'}).join("");
+  $("fdeps").innerHTML=Object.keys(DEPS).map(function(d,i){var D=DEPS[d],n=L.filter(function(x){return x.answers&&x.answers[d]}).length;
+    var qa=D.q.map(function(q,j){return avg(L.map(function(x){return x.answers&&x.answers[d]?x.answers[d]["q"+(j+1)]:null}))});var da=avg(qa.filter(function(v){return v!=null}));
+    return '<div class="card"><div class="lab"><span class="stp">'+(i+1)+'</span>'+esc(D.n)+'</div><div class="plc">'+f1(da)+' / 5 <span class="mute" style="font-size:14px;font-weight:500">· '+n+' rating'+(n===1?'':'s')+'</span></div>'+
+      '<div style="margin-top:10px">'+D.q.map(function(q,j){var v=qa[j];return '<div class="qrow"><span>'+esc(q)+'</span><div class="meter"><i style="width:'+(v?v/5*100:0)+'%"></i></div><b>'+f1(v)+'</b></div>'}).join("")+'</div></div>'}).join("");
+  $("flist").innerHTML=L.map(function(x){var sc=Object.keys(x.answers||{}).map(function(d){var a=avg(Object.keys(x.answers[d]).map(function(k){return x.answers[d][k]}));return '<span>'+esc((DEPS[d]||{n:d}).n)+' <b>'+f1(a)+'</b></span>'}).join("");
+    var cm=Object.keys(x.comments||{}).map(function(d){return '<blockquote><b>'+esc((DEPS[d]||{n:d}).n)+'</b>'+esc(x.comments[d])+'</blockquote>'}).join("")+(x.final_comment?'<blockquote><b>General</b>'+esc(x.final_comment)+'</blockquote>':'');
+    return '<article class="card resp" data-id="'+x.id+'"><div class="top2"><div><b style="font-size:17px">'+esc(x.client||"Client not given")+'</b><div class="mute" style="font-size:13px">'+dt(x.created_at)+'</div></div><span class="st">Recommend '+(x.overall==null?"–":x.overall)+'/10</span></div><div class="scores">'+sc+'</div>'+cm+'<div><button class="btn ghost sm" data-a="del" type="button">Delete</button></div></article>'}).join("")||'<div class="card empty">No feedback yet.</div>';
+}
+$("fcl").addEventListener("input",drawFb);
+$("flist").addEventListener("click",async function(e){var b=e.target.closest("button[data-a=del]");if(!b)return;
+  if(b.dataset.arm!=="1"){b.dataset.arm="1";b.textContent="Tap again to delete";setTimeout(function(){b.dataset.arm="";b.textContent="Delete"},3000);return}
+  var id=b.closest(".resp").dataset.id,d=await sb.from("feedback_responses").delete().eq("id",id).select();if(d.error||!d.data.length){toast("Couldn't delete");return}FB=FB.filter(function(x){return x.id!==id});drawFb();toast("Deleted")});
+
+/* ---- admins ---- */
+async function loadUsers(){var r=await sb.from("site_admins").select("*").order("created_at");
+  $("ulist").innerHTML=(r.data||[]).map(function(u){var mine=u.email===me.email.toLowerCase();return '<div class="urow"><div><b>'+esc(u.name||u.email)+'</b><div class="mute" style="font-size:13px">'+esc(u.email)+'</div></div>'+(mine?'<span class="mute" style="font-size:13px">you</span>':'<button class="btn ghost sm" data-e="'+esc(u.email)+'" type="button">Remove</button>')+'</div>'}).join("")}
+$("ulist").addEventListener("click",async function(e){var b=e.target.closest("button[data-e]");if(!b)return;
+  if(b.dataset.arm!=="1"){b.dataset.arm="1";b.textContent="Tap again";setTimeout(function(){b.dataset.arm="";b.textContent="Remove"},3000);return}
+  var r=await sb.from("site_admins").delete().eq("email",b.dataset.e).select();toast(r.error||!r.data.length?"Couldn't remove":"Removed");loadUsers()});
+$("uform").onsubmit=async function(e){e.preventDefault();var row={email:$("uemail").value.trim().toLowerCase(),name:$("uname").value.trim()||null};
+  var r=await sb.from("site_admins").insert(row).select();if(r.error||!r.data.length){toast("Couldn't add admin");return}$("uform").reset();toast("Admin added");loadUsers()};
+
+/* ---- Excel (SheetJS on first use, CSV fallback) ---- */
+var xp=null;
+function needX(){if(window.XLSX)return Promise.resolve(window.XLSX);if(!xp)xp=new Promise(function(ok,no){var s=document.createElement("script");s.src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js";s.onload=function(){window.XLSX?ok(window.XLSX):no()};s.onerror=function(){xp=null;no()};document.head.appendChild(s)});return xp}
+async function save(name,rows){try{var X=await needX(),ws=X.utils.aoa_to_sheet(rows),wb=X.utils.book_new();X.utils.book_append_sheet(wb,ws,"Sheet1");X.writeFile(wb,name+".xlsx")}
+  catch(e){var csv=rows.map(function(r){return r.map(function(v){v=String(v==null?"":v);return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v}).join(",")}).join("\n");var a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["﻿"+csv],{type:"text/csv"}));a.download=name+".csv";a.click()}}
+var today=function(){return new Date().toLocaleDateString("en-GB").replace(/\//g,"-")};
+$("rxl").onclick=function(){save("Orbis quote requests "+today(),[["Date","Name","Company","Email","Phone","From","To","Cargo details","Status","Notes","Updated by"]].concat(REQ.map(function(x){return [dt(x.created_at),x.name,x.company,x.email,x.phone,x.from_place,x.to_place,x.cargo_details,x.status,x.admin_notes,x.updated_by]})))};
+$("fxl").onclick=function(){var c=$("fcl").value,L=FB.filter(function(x){return !c||x.client===c});var head=["Date","Client","Recommend (0-10)"],keys=[];
+  Object.keys(DEPS).forEach(function(d){DEPS[d].q.forEach(function(q,j){head.push(DEPS[d].n+": "+q);keys.push([d,"q"+(j+1)])});head.push(DEPS[d].n+": comment");keys.push([d,"c"])});head.push("General comment");
+  save("Orbis feedback "+today(),[head].concat(L.map(function(x){return [dt(x.created_at),x.client,x.overall].concat(keys.map(function(k){if(k[1]==="c")return (x.comments||{})[k[0]]||"";var a=(x.answers||{})[k[0]];if(!a)return "";var v=a[k[1]];return v==null?"N/A":v})).concat([x.final_comment])})))};
+
+/* ---- live ---- */
+var ch=null;function live(){if(ch)sb.removeChannel(ch);
+  ch=sb.channel("site-admin").on("postgres_changes",{event:"INSERT",schema:"public",table:"quote_requests"},function(p){if(p.new&&!REQ.some(function(x){return x.id===p.new.id})){REQ.unshift(p.new);drawReq();toast("New quote request from "+p.new.name)}})
+   .on("postgres_changes",{event:"INSERT",schema:"public",table:"feedback_responses"},function(){loadFb();toast("New feedback received")}).subscribe()}
+document.addEventListener("visibilitychange",function(){if(!document.hidden&&me){loadReq();loadFb()}});
+})();
+</script>
+</body>
+</html>

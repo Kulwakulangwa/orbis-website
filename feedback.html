@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Service Feedback · Orbis Logistics</title>
+<meta name="description" content="Tell Orbis Logistics how we did over the past 3 months.">
+<link rel="icon" href="logo_dark.png">
+<link rel="stylesheet" href="glass.css">
+<style>
+.wrap{max-width:1320px;margin:0 auto;padding:clamp(24px,5vw,64px) clamp(16px,3vw,32px) 80px;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(24px,4vw,56px);align-items:start}
+@media (max-width:900px){.wrap{grid-template-columns:1fr}}
+.intro{position:sticky;top:110px}
+@media (max-width:900px){.intro{position:static}}
+.kick{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+.intro h1{margin:18px 0 0;font-size:clamp(40px,5.4vw,72px);line-height:1.02;font-weight:750;letter-spacing:-.035em}
+.intro h1 span{color:var(--accent)}
+.intro .lead{margin:22px 0 0;font-size:clamp(17px,1.6vw,21px);line-height:1.45;color:var(--mute);max-width:30ch}
+.note{margin-top:28px;padding:16px 18px;border-radius:18px;background:var(--card-bg);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border:1px solid var(--card-line);font-size:14px;line-height:1.5;color:var(--mute)}
+.note b{display:block;color:var(--fg);font-size:15px;margin-bottom:2px}
+.flow{display:flex;flex-direction:column;gap:18px}
+.prog{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+.bar{height:6px;border-radius:6px;background:var(--track);overflow:hidden;margin-top:14px}
+.bar i{display:block;height:100%;width:50%;background:var(--brand);border-radius:6px;transition:width .4s}
+h2{margin:22px 0 6px;font-size:clamp(24px,2.4vw,32px);letter-spacing:-.025em;line-height:1.1}
+.sub{margin:0;color:var(--mute);font-size:16px;line-height:1.45}
+.q-h{margin:26px 0 12px;font-size:17px;font-weight:650}
+.dep{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:16px;border:1px solid var(--card-line);background:var(--chip-bg);cursor:pointer;margin-top:10px;transition:border-color .2s,background .2s}
+.dep:hover{border-color:var(--brand)}
+.dep input{width:22px;height:22px;accent-color:var(--brand);flex:none;margin:0}
+.dep b{display:block;font-size:16px}.dep small{display:block;font-size:14px;color:var(--mute);margin-top:2px}
+.dep:has(input:checked){border-color:var(--brand);background:var(--card-bg)}
+.scale{display:flex;flex-wrap:wrap;gap:6px 16px;padding:12px 16px;border-radius:14px;background:var(--chip-bg);font-size:13px;color:var(--mute);margin-top:16px}
+.q{padding:18px 0;border-top:1px solid var(--card-line)}
+.q:first-of-type{border-top:0}
+.q p{margin:0 0 12px;font-size:16px;font-weight:600;line-height:1.35}
+.q p span{color:var(--mute);margin-right:6px}
+.rate{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+.rate button{min-height:46px;border-radius:12px;border:1px solid var(--card-line);background:var(--chip-bg);font-size:16px;font-weight:650;cursor:pointer;transition:background .15s,color .15s,border-color .15s}
+.rate button:hover{border-color:var(--brand)}
+.rate button[aria-pressed="true"]{background:var(--brand);color:var(--bg);border-color:var(--brand)}
+.rate.ten{grid-template-columns:repeat(11,minmax(0,1fr))}
+@media (max-width:560px){.rate.ten{grid-template-columns:repeat(6,minmax(0,1fr))}}
+.q.miss p{color:var(--err)}
+.err{color:var(--err);font-size:14px;margin:12px 0 0;min-height:1.2em}
+.acts{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:22px;flex-wrap:wrap}
+.done{text-align:center;padding:clamp(32px,5vw,56px) clamp(20px,3vw,40px)}
+.done .ico{margin:0 auto;width:60px;height:60px;border-radius:50%}
+.done h2{margin-top:20px}
+select.inp{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--mute) 50%),linear-gradient(135deg,var(--mute) 50%,transparent 50%);background-position:calc(100% - 20px) 21px,calc(100% - 15px) 21px;background-size:5px 5px;background-repeat:no-repeat;padding-right:40px}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in">
+  <a class="logo" href="index.html" aria-label="Orbis Logistics home"><img class="ld" src="logo_dark.png" alt="Orbis Logistics"><img class="lw" src="logo_white.png" alt=""></a>
+  <span class="toplab">Service feedback</span>
+</div></header>
+
+<main class="wrap">
+  <section class="intro" aria-label="About this survey">
+    <div class="kick">Listen · Understand · Improve</div>
+    <h1>Your experience.<br><span>Our next step.</span></h1>
+    <p class="lead">Tell us where Orbis delivers — and where we need to do better.</p>
+    <div class="note"><b>Client feedback</b>Think about the past 3 months. Rate only what you know. No name or email needed.</div>
+  </section>
+
+  <section class="flow" aria-live="polite">
+    <!-- STEP 1 -->
+    <div class="card" id="s1">
+      <div class="prog"><span class="lab">About your experience</span><span class="lab" style="letter-spacing:.04em">Step 1 of 2</span></div>
+      <div class="bar"><i style="width:50%"></i></div>
+      <h2>Let’s make this relevant to you.</h2>
+      <p class="sub">About 5 minutes for all five areas. Pick fewer if some don’t apply.</p>
+      <label class="fld" style="margin-top:22px">Your company<select class="inp" id="client"></select></label>
+      <div class="q-h">Which areas can you rate?</div>
+      <div id="deps"></div>
+      <p class="err" id="e1"></p>
+      <div class="acts"><span></span><button class="btn" id="next" type="button">Continue</button></div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div id="s2" hidden>
+      <div class="card">
+        <div class="prog"><span class="lab">Your ratings</span><span class="lab" style="letter-spacing:.04em">Step 2 of 2</span></div>
+        <div class="bar"><i style="width:100%"></i></div>
+        <div class="scale"><span>1 Very poor</span><span>2 Poor</span><span>3 Fair</span><span>4 Good</span><span>5 Excellent</span><span>N/A No experience</span></div>
+      </div>
+      <div id="qcards" class="flow" style="margin-top:18px"></div>
+      <div class="card" style="margin-top:18px">
+        <div class="ch"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.6-4.6 4.1 1.3 6L12 16.3 6.6 19.3l1.3-6L3.3 9.2l6.1-.6z"/></svg></div><div><div class="lab">Overall</div><div class="plc">How likely are you to recommend Orbis?</div></div></div>
+        <div class="q" id="q_overall" style="border-top:0;padding-bottom:6px"><p><span>0 = not at all · 10 = definitely</span></p><div class="rate ten" data-k="overall"></div></div>
+        <label class="fld" style="margin-top:14px">Anything else you want us to know? (optional)<textarea class="inp" id="final" maxlength="3000"></textarea></label>
+        <p class="err" id="e2"></p>
+        <div class="acts"><button class="btn ghost" id="back" type="button">Back</button><button class="btn" id="send" type="button">Send feedback</button></div>
+      </div>
+    </div>
+
+    <!-- DONE -->
+    <div class="card done" id="s3" hidden>
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg></div>
+      <h2>Thank you.</h2>
+      <p class="sub">Your feedback goes straight to our management team.</p>
+      <div class="acts" style="justify-content:center"><a class="btn ghost" href="index.html">Back to website</a></div>
+    </div>
+  </section>
+</main>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function(){
+var SB="https://kuwbptjcxdnceabtwbsy.supabase.co",KEY="sb_publishable_eWmP4uNvBzHfrE9QuekCPQ_mebYbFd_";
+var CLIENTS=["Reload Logistics","AGL – Africa Global Logistics","Vin Mart","Fracht Group – Polytra","C. Steinweg Group","Impala","Imperial Road Haulage","Other"];
+var I={
+ book:'<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16M9 15l2 2 4-4"/>',
+ trans:'<path d="M2 7h11v9H2zM13 10h4l4 3v3h-8"/><circle cx="6" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/>',
+ bord:'<path d="M4 21V4M4 5h12l-2 3.5L16 12H4"/><path d="M14 21h6M17 15v6"/>',
+ off:'<path d="M12 4v10M7 9l5 5 5-5"/><path d="M4 18h16"/>',
+ fin:'<rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/>'};
+var DEPS=[
+ {k:"bookings",n:"Bookings & dispatch",d:"Orders, truck availability and loading",ic:I.book,q:["How fast do we confirm your truck orders?","How well do we supply trucks when you need them?","How punctual are our trucks for loading?","How accurate are booking details (trucks, drivers, documents)?","How easy is it to reach our operations team?"]},
+ {k:"transit",n:"Transit & tracking",d:"Updates, daily reports and drivers",ic:I.trans,q:["How accurate are our truck location updates?","How useful is our daily tracking report?","How accurate are our arrival estimates (ETA)?","How professional are our drivers?","How safe and intact is your cargo on arrival?"]},
+ {k:"border",n:"Border clearing & documents",d:"Documents and movement through borders",ic:I.bord,q:["How fast do we prepare clearance documents?","How accurate are our documents?","How well do we update you on border delays?","How does clearance time compare with what we told you?","How well do we handle clearance problems within our control?"]},
+ {k:"offload",n:"Offloading & POD",d:"Delivery, offloading and proof of delivery",ic:I.off,q:["How often do we deliver on the agreed date?","How well do we coordinate offloading?","How quickly do you receive the POD?","How well do we handle delivery problems?","How clear is our communication at delivery?"]},
+ {k:"finance",n:"Finance & invoicing",d:"Invoices, rates and payment communication",ic:I.fin,q:["How accurate are our invoices?","How clear are our rates and charges?","How fast do we answer billing questions?","How clear is our statement and payment communication?","How fair are extra charges, when they apply?"]}];
+var $=function(id){return document.getElementById(id)};
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function toast(t){var e=$("toast");e.textContent=t;e.classList.add("on");clearTimeout(e._t);e._t=setTimeout(function(){e.classList.remove("on")},2600)}
+$("client").innerHTML='<option value="">Select…</option>'+CLIENTS.map(function(c){return '<option>'+esc(c)+'</option>'}).join("");
+$("deps").innerHTML=DEPS.map(function(d){return '<label class="dep"><input type="checkbox" value="'+d.k+'" checked><span><b>'+esc(d.n)+'</b><small>'+esc(d.d)+'</small></span></label>'}).join("");
+var A={},C={},OV=null;
+function rateRow(ten){var opts=ten?[0,1,2,3,4,5,6,7,8,9,10]:[1,2,3,4,5,"N/A"];
+  return opts.map(function(v){return '<button type="button" data-v="'+v+'" aria-pressed="false" aria-label="'+(v==="N/A"?"No experience":v)+'">'+v+'</button>'}).join("")}
+function chosen(){return Array.prototype.map.call(document.querySelectorAll('#deps input:checked'),function(i){return i.value})}
+$("next").onclick=function(){
+  var ds=chosen();if(!ds.length){$("e1").textContent="Pick at least one area.";return}$("e1").textContent="";
+  $("qcards").innerHTML=DEPS.filter(function(d){return ds.indexOf(d.k)>=0}).map(function(d,i){
+    A[d.k]=A[d.k]||{};
+    return '<div class="card" data-d="'+d.k+'"><div class="ch"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+d.ic+'</svg></div><div><div class="lab"><span class="stp">'+(i+1)+'</span>'+esc(d.n)+'</div><div class="plc">'+esc(d.d)+'</div></div></div>'+
+      d.q.map(function(q,j){var k="q"+(j+1);return '<div class="q" id="q_'+d.k+'_'+k+'"><p><span>'+(j+1)+'.</span>'+esc(q)+'</p><div class="rate" data-d="'+d.k+'" data-k="'+k+'">'+rateRow()+'</div></div>'}).join("")+
+      '<label class="fld" style="margin-top:6px">What do we do well, and what should we improve? (optional)<textarea class="inp" data-c="'+d.k+'" maxlength="1500">'+esc(C[d.k]||"")+'</textarea></label></div>'}).join("");
+  // restore previous answers
+  document.querySelectorAll('#qcards .rate').forEach(function(r){var v=(A[r.dataset.d]||{})[r.dataset.k];if(v!==undefined)r.querySelectorAll('button').forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.v===String(v===null?"N/A":v)))})});
+  if(!document.querySelector('.rate.ten button'))document.querySelector('.rate.ten').innerHTML=rateRow(true);
+  $("s1").hidden=true;$("s2").hidden=false;window.scrollTo({top:0,behavior:"smooth"});
+};
+$("back").onclick=function(){$("s2").hidden=true;$("s1").hidden=false;window.scrollTo({top:0,behavior:"smooth"})};
+document.addEventListener("click",function(e){var b=e.target.closest(".rate button");if(!b)return;var r=b.parentNode;
+  r.querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed",String(x===b))});
+  var v=b.dataset.v==="N/A"?null:+b.dataset.v;
+  if(r.dataset.k==="overall")OV=v;else{A[r.dataset.d]=A[r.dataset.d]||{};A[r.dataset.d][r.dataset.k]=v}
+  var q=r.closest(".q");if(q)q.classList.remove("miss")});
+document.addEventListener("input",function(e){if(e.target.dataset&&e.target.dataset.c)C[e.target.dataset.c]=e.target.value});
+$("send").onclick=function(){
+  var ds=chosen(),miss=null;
+  ds.forEach(function(d){for(var j=1;j<=5;j++){var k="q"+j;if(!A[d]||!(k in A[d])){var el=$("q_"+d+"_"+k);el.classList.add("miss");if(!miss)miss=el}}});
+  if(OV===null){$("q_overall").classList.add("miss");if(!miss)miss=$("q_overall")}
+  if(miss){$("e2").textContent="Please answer the questions marked in red (choose N/A if you have no experience).";miss.scrollIntoView({behavior:"smooth",block:"center"});return}
+  $("e2").textContent="";
+  var answers={},comments={};ds.forEach(function(d){answers[d]=A[d];if((C[d]||"").trim())comments[d]=C[d].trim()});
+  var row={client:$("client").value||null,departments:ds,answers:answers,comments:comments,overall:OV,final_comment:$("final").value.trim()||null};
+  var b=$("send");b.disabled=true;b.textContent="Sending…";
+  fetch(SB+"/rest/v1/feedback_responses",{method:"POST",headers:{"apikey":KEY,"Content-Type":"application/json","Prefer":"return=minimal"},body:JSON.stringify(row)})
+  .then(function(r){if(!r.ok)throw r;$("s2").hidden=true;$("s3").hidden=false;window.scrollTo({top:0,behavior:"smooth"})})
+  .catch(function(){$("e2").textContent="Could not send right now. Please try again in a moment.";toast("Not sent — check your connection")})
+  .then(function(){b.disabled=false;b.textContent="Send feedback"});
+};
+})();
+</script>
+</body>
+</html>
